@@ -1,32 +1,17 @@
-import axios from "axios"
-import { useState, createContext, useEffect } from "react"
+import axios from "axios";
+import { useState, createContext, useEffect } from "react";
 
-
-
-export const UserContext = createContext()
-
-const deleteItem = (id) => {
-  fetch(`https://6628929e54afcabd07362d18.mockapi.io/project/${id}`, {
-    method: "DELETE",
-  })
-}
-
-
+export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [data, setData] = useState([])
-
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get('https://6628929e54afcabd07362d18.mockapi.io/project')
-      .then((result) => setData(result.data))
-  }, [])
+      .get("https://6628929e54afcabd07362d18.mockapi.io/project")
+      .then((res) => setData(res.data));
+  }, []);
 
-  return (
-    <UserContext.Provider value={{data, deleteItem, setData}}>
-      {children}
-    </UserContext.Provider>
-  )
-}
-export default UserProvider
+  return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
+};
+export default UserProvider;

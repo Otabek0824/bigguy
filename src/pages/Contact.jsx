@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Contact = () => {
+const Projecter = () => {
   return (
-    <div>Contact page</div>
+    <div>Projecter page</div>
   )
 }
 
-export default Contact
+export default Projecter

@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  color: #ffbe1f;
+  background-color: #ffbe1f;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0px;
+  background-color: white;
+}
+
+.box ul {
+  display: none;
+}
+ul.open {
+  display: block;
+}
+#point {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+#nothing {
+  position: -webkit-sticky;
+  position: sticky;
+}
+.tabs {
+  padding: 15px 22px;
+  border: 1px gray solid;
+  border-radius: 5px;
+}
+.tabs:hover {
+  background-color: #ffc01f88;
+}
+.active-tabs {
+  background-color: #ffc01f88;
+  border-color: rgb(219, 143, 4);
+  border-width: 3px;
+}
+
+#content {
+  display: none;
+}
+#active-content {
+  display: block;
+}
+
+.a {
+  text-decoration: none;
+  color: gray;
+  font-weight: 800;
+  position: relative;
+  transition-duration: 0.4s;
+  /* padding: 0 10px; */
+  font-size: 13px;
+}
+.a:hover {
+  color: black;
+}
+.a:after {
+  position: absolute;
+  content: "";
+  background-color: black;
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+}
+.a:hover::after {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root > main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hover-menu {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  max-height: 80vh;
+}
+
+.hover-menu__categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.hover-menu__category a {
+  display: inline-block;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.hover-menu__category.active,
+.hover-menu__category:hover {
+  background-color: white;
+  color: orange;
+  cursor: pointer;
+}
+
+.hover-menu__subcategory {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.hover-menu__subcategory-links {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.hover-menu__subcategory-link {
+  color: gray;
+  font-size: 14px;
+}
+
+.hover-menu__content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 80vh;
+  row-gap: 40px;
+  column-gap: 100px;
+  padding: 12px 40px;
+}
+
+#nothingg {
+  -webkit-box-shadow: -1px -9px 30px -4px rgba(189, 183, 183, 1);
+  -moz-box-shadow: -1px -9px 30px -4px rgba(189, 183, 183, 1);
+  box-shadow: -1px -9px 30px -4px rgba(189, 183, 183, 1);
+}

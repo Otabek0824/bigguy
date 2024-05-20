@@ -1,13 +1,26 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import React from "react"
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
+import React, { useContext, useEffect } from "react"
 import Home from "../pages/Home"
-import About from "../pages/About"
-import Contact from "../pages/Contact"
-import Portfolio from "../pages/Portfolio"
-import Basket from "../pages/Basket"
-import Layout from "../Layout"
+import Layout from "../somethings/Layout"
+import Baset from "../pages/Baset"
+import Dynamicpage from "../pages/dynamicpage"
+import Smartfonlar from "../pages/Smartfonlar"
+import Noutbook from "../pages/noutbuk va kompyuterlar"
+import Projecter from "../pages/Contact"
+import Audiotexnikalar from "../pages/Audiotexnikalar"
+import Technology from "../pages/Uy uchun texnika"
+import Techforkitchen from "../pages/techforkitchen"
+import Beauty from "../pages/Beauty"
+import Clever from "../pages/clever"
+import Next from "../pages/next"
+import DiscountMicPage from "../Dynamicpages/discountmicpage"
+import Interestmicpage from "../Dynamicpages/Interestmicpage"
+import Auth from "../pages/Auth"
+import Login from "../Authform/Login"
+import Register from "../Authform/Register"
+import { AuthContext } from "../context/AuthContext"
 
-const route = createBrowserRouter([
+const privateRoute = createBrowserRouter([
   {
     element: <Layout />,
     children: [
@@ -16,27 +29,86 @@ const route = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/smartfonlar",
+        element: <Smartfonlar />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/products/:id",
+        element: <Dynamicpage />,
       },
       {
-        path: "/portfolio",
-        element: <Portfolio />,
+        path: "/projecter",
+        element: <Projecter />,
       },
       {
-        path: "/basket",
-        element: <Basket />,
+        path: "/baset",
+        element: <Baset />,
+      },
+      {
+        path: "/noutbook",
+        element: <Noutbook />,
+      },
+      {
+        path: "/audiotexnikalar",
+        element: <Audiotexnikalar />,
+      },
+      {
+        path: "/Technology",
+        element: <Technology />,
+      },
+      {
+        path: "/techforkitchen",
+        element: <Techforkitchen />,
+      },
+      {
+        path: "/beauty",
+        element: <Beauty />,
+      },
+      {
+        path: "/clever",
+        element: <Clever />,
+      },
+      {
+        path: "/next",
+        element: <Next />,
+      },
+      {
+        path: "/chegirma/:id",
+        element: <DiscountMicPage />,
+      },
+      {
+        path: "/interest/:id",
+        element: <Interestmicpage />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <h1>hey get out of here</h1>,
+  },
+])
+
+const publicRoute = createBrowserRouter([
+  {
+    path: "*",
+    element: localStorage.getItem("token") ? <Navigate to="/" /> : <Auth />,
+    children: [
+      {
+        path: "*",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },
 ])
 
 const Routers = () => {
-  return <RouterProvider router={route} />
+  const { isAuth } = useContext(AuthContext)
+
+  return <RouterProvider router={isAuth ? privateRoute : publicRoute} />
 }
 
 export default Routers
